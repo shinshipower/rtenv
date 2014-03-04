@@ -130,7 +130,6 @@ const hcmd_entry cmd_data[CMD_COUNT] = {
 	[CMD_HELP] = {.cmd = "help", .func = show_cmd_info, .description = "List all commands you can use."},
 	[CMD_HISTORY] = {.cmd = "history", .func = show_history, .description = "Show latest commands entered."}, 
 	[CMD_MAN] = {.cmd = "man", .func = show_man_page, .description = "Manual pager."},
-	//[CMD_TEST] = {.cmd = "test", .func = show_test, . description = "This is for test"},
 	[CMD_PS] = {.cmd = "ps", .func = show_task_info, .description = "List all the processes."},
 	[CMD_TEST] = {.cmd = "test", .func = show_test, . description = "This is for test"}
 
