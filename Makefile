@@ -52,7 +52,10 @@ qemudbg: main.bin $(QEMU_STM32)
 	$(QEMU_STM32) -M stm32-p103 \
 		-gdb tcp::3333 -S \
 		-kernel main.bin
-
+qemu_ng: main.bin $(QEMU_STM32)
+	$(QEMU_STM32) -nographic -M stm32-p103 -kernel main.bin
+		
+		
 
 qemu_remote: main.bin $(QEMU_STM32)
 	$(QEMU_STM32) -M stm32-p103 -kernel main.bin -vnc :1
