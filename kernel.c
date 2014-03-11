@@ -2,7 +2,7 @@
 #include "RTOSConfig.h"
 
 #include "syscall.h"
-
+#include "kernel.h"
 #include <stddef.h>
 
 void *memcpy(void *dest, const void *src, size_t n);
@@ -60,14 +60,7 @@ void puts(char *s)
 	}
 }
 
-#define MAX_CMDNAME 19
-#define MAX_ARGC 19
-#define MAX_CMDHELP 1023
-#define HISTORY_COUNT 20
-#define CMDBUF_SIZE 100
-#define MAX_ENVCOUNT 30
-#define MAX_ENVNAME 15
-#define MAX_ENVVALUE 127
+
 #define STACK_SIZE 512 /* Size of task stacks in words */
 #define TASK_LIMIT 8  /* Max number of tasks we can handle */
 #define PIPE_BUF   64 /* Size of largest atomic pipe message */
@@ -107,17 +100,7 @@ void show_task_info(int argc, char *argv[]);
 void show_man_page(int argc, char *argv[]);
 void show_history(int argc, char *argv[]);
 void show_test(int argc, char *argv[]);
-/* Enumeration for command types. */
-enum {
-	CMD_ECHO = 0,
-	CMD_EXPORT,
-	CMD_HELP,
-	CMD_HISTORY,
-	CMD_MAN,
-	CMD_PS,
-	CMD_TEST,
-	CMD_COUNT
-} CMD_TYPE;
+
 /* Structure for command handler. */
 typedef struct {
 	char cmd[MAX_CMDNAME + 1];
@@ -134,12 +117,6 @@ const hcmd_entry cmd_data[CMD_COUNT] = {
 	[CMD_TEST] = {.cmd = "test", .func = show_test, . description = "This is for test"}
 
 };
-
-/* Structure for environment variables. */
-typedef struct {
-	char name[MAX_ENVNAME + 1];
-	char value[MAX_ENVVALUE + 1];
-} evar_entry;
 evar_entry env_var[MAX_ENVCOUNT];
 int env_count = 0;
 
@@ -647,10 +624,6 @@ void export_envvar(int argc, char *argv[])
 		}
 	}
 }
-//test
-
-
-//void show_test(int argc, char* argv[])
 
 
 
