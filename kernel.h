@@ -1,7 +1,6 @@
 #ifndef KERNEL_H
 #define KERNEL_H
 
-
 #define MAX_CMDNAME 19
 #define MAX_ARGC 19
 #define MAX_CMDHELP 1023
@@ -14,7 +13,7 @@
 
 
 /* Enumeration for command types. */
-enum {
+typedef enum {
 	CMD_ECHO = 0,
 	CMD_EXPORT,
 	CMD_HELP,
