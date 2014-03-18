@@ -20,6 +20,6 @@ while $r0
    else
       printf "Fail: cmdtok returns \"%s\", shall be \"%s\"\n", $r0, cmd[$r1]
    end
-   set $r0=cmdtok(NULL)
+   set $r0=cmdtok(0)
 end
 
